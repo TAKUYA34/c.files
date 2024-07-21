@@ -949,7 +949,7 @@ int main(void){
 }
 #endif
 
-#if(1)
+#if(0)
 /*  ポインタ配列、ダブルポインタ配列  */
 #include <stdio.h>
 
@@ -961,7 +961,7 @@ void print(int num, const char** pp){
 }
 
 int main(void){
-  
+
   const char* x[] = {
     "BAK ",
     "BSW ",
