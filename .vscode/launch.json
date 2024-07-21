@@ -1,0 +1,15 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+      {
+          "name": "c_debug",
+          "type": "lldb",
+          "request": "launch",
+          "program": "/Users/yamawakitakuya/c.files/a.out",
+          "args": [""],
+          "cwd": "${fileDirname}",
+          "preLaunchTask": "c_build",
+          "postDebugTask": "rm_file"
+      }
+  ]
+}

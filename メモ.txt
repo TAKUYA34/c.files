@@ -1,0 +1,16 @@
+必須知識
+・インターネットの知識(CORS)
+①OSI参照モデル、TCP/IP WWWの概念を知る。
+②プログラム言語(どれか1つ)
+③GIT\GIThub
+④RDB()
+⑤RestAPI
+⑥HTTPとHTTPSとの違い
+⑦SSL/TSL
+⑧SQL/正規化
+⑨Docker⇨LInuxの知識が必要shell→エルピック/ドッカー(コンテナ)
+
+覚えた後
+①ユニットテスト(CI/CD)→単体テストをコードで書く⇨一発で終わる
+②GIThubコビロット→必須
+
