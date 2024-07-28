@@ -114,6 +114,7 @@ int main(void){
   //--- do {} while(0)形式 〜マクロ形式〜 ---//
   #define DO_ONE(x) test(x)
 
+  /* a_function関数処理 */
   static int a_function(int* x){
     int y = 50;
     x = &y;
