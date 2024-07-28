@@ -97,7 +97,7 @@ int main(void){
 //--- 文字列化演算子# ---//
   #define NAIVE_STR(x) #x /* パラメータを文字列に変換 */
   #define NAME Anders
-//--- 文字列化演算子# 〜Anderを表示させる 〜---//
+//--- 文字列化演算子# 〜Anderを表示させる 〜 ---//
   #define STR_HELPER(x) #x
   #define STR(x) STR_HELPER(x)
 //--- トークン連結演算子## ---//
@@ -106,7 +106,7 @@ int main(void){
   #define TimeCount 8
   #define NAIVE_AVERAGE(x) (((Max##x) - (Min##x)) / (x##Count))
 //--- トークン連結演算子## 〜失敗例〜 ---//
-  #define TIME Time /* return (((MaxTIME) - (MinTIME)) / (TIMECount)); ←error #*/
+  #define TIME Time /* return (((MaxTIME) - (MinTIME)) / (TIMECount)); ←error # */
 //--- トークン連結演算子## 〜解決策〜 ---//
   #define GLUE_HELPER(x, y) x##y
   #define GLUE(x, y) GLUE_HELPER(x, y)
@@ -130,7 +130,7 @@ int main(void){
   int i;
   int x = 4;
   printf("xの値は%dです。\n", TEST(x));
-  printf("%d\n", SQUARE(++i)); /* printf("%d\n", ((++i) * (++i))); ※warning: multiple unsequenced modifications to 'i' [-Wunsequenced]*/ 
+  printf("%d\n", SQUARE(++i)); /* printf("%d\n", ((++i) * (++i))); ※warning: multiple unsequenced modifications to 'i' [-Wunsequenced]*/
   puts(NAIVE_STR(NAME)); /* NAMEが出力され、Andersは出力されない. */
   puts(STR(NAME)); /* Andersが出力される. */
   printf("平均値は%dです。\n", NAIVE_AVERAGE(Time));
