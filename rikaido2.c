@@ -140,8 +140,32 @@ int main(void){
 #endif
 
 
+#if (1)
+#include "DataAcq_info.c"
 
+#define Bit_shiftL(x) (K_DATA(x) & (unsigned short)1U << 4)
+#define DATALIST_PASS (M_DATA_1, M_DATA_2, M_DATA_3, M_DATA_4)
+#define DATALIST_VALUE(a, b ,c, d) (DATA_1(a), DATA_2(b), DATA_3(c), DATA_4(d))
+#define M_DATALIST DATALIST_VALUE
+#define K_DATA(x) M_DATALIST
 
+typedef struct 
+{
+long u1_ecuInfoData;
+long u1_ecuInfoData_a;
+long u1_ecuInfoData_b;
+long u1_ecuInfoData_c;
+long u1_ecuInfoData_d;
+long u1_ecuInfoData_e;
+long u1_ecuInfoData_f;
+long u1_ecuInfoData_g;
+long u1_ecuInfoData_h;
+long u1_ecuInfoData_i;
+long u1_ecuInfoData_j;
+long u1_ecuInfoData_k;
+} STRUCTURE_VALUES;
+
+#endif
 
 
 
