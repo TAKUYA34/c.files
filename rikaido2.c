@@ -3,6 +3,7 @@
 //--- getchar関数とEOF ---//
 #include <stdio.h>
 #include "Prototype_dec.h"
+#include "DataAcq_info.c"
 
 #if (0)
 int main(void){
@@ -89,7 +90,7 @@ int main(void){
 #endif
 
 
-#if (1)
+#if (0)
 //--- 関数マクロ ---//
   #define TEST(x) (x * 2)
 //--- 副作用を含むパラメータを持つマクロ ---//
@@ -140,8 +141,7 @@ int main(void){
 #endif
 
 
-#if (1)
-#include "DataAcq_info.c"
+#if (0)
 
 #define Bit_shiftL(x) (K_DATA(x) & (unsigned short)1U << 4)
 #define DATALIST_PASS (M_DATA_1, M_DATA_2, M_DATA_3, M_DATA_4)
@@ -167,6 +167,43 @@ long u1_ecuInfoData_k;
 
 #endif
 
+#if (1)
+/* 二つの整数を昇順に並べるプログラムの作成 */
 
+void swap(int* x, int* y)
+{
+  int temp = *x;  // tempにxの値で初期化
+  *x = *y;  // yの値をxに更新
+  *y = temp; //  xの値をyに更新
+}
+
+/* n1 <= n2となるようにソートする */
+void swap2(int* n1, int* n2)
+{
+  if (n1 > n2)
+  {
+    swap(n1, n2);
+  }
+}
+
+int main(void)
+{
+  int x;
+  int y;
+
+  puts("xの値を入力してください。");  scanf("%d", &x);
+  puts("yの値を入力してください。");  scanf("%d", &y);
+
+  printf("xの値は%dです。\n", x);
+  printf("yの値は%dです。\n", y);
+
+  swap2(&x, &y);
+
+  printf("xの値は%dに変化しました。\n", x);
+  printf("yの値は%dに変化しました。\n", y);
+
+}
+
+#endif
 
 
