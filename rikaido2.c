@@ -182,7 +182,7 @@ void swap2(int* n1, int* n2)
 {
   if (n1 > n2)
   {
-    swap(n1, n2);
+    swap(n1, n2); // main内でアドレスを渡しているため、アドレスを返さなくても良い。
   }
 }
 
@@ -206,4 +206,6 @@ int main(void)
 
 #endif
 
+#if (1)
 
+#endif
