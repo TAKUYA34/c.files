@@ -167,8 +167,8 @@ long u1_ecuInfoData_k;
 
 #endif
 
-#if (1)
-/* 二つの整数を昇順に並べるプログラムの作成 */
+#if (0)
+/* 二つの整数を昇順に並べる */
 
 void swap(int* x, int* y)
 {
@@ -203,9 +203,19 @@ int main(void)
   printf("yの値は%dに変化しました。\n", y);
 
 }
-
 #endif
 
 #if (1)
+/* 配列の要素アドレス(要素へのポインタ)を表示する */
 
+int main(void){
+
+  int arrayData[5] = {1, 2, 3, 4, 5};
+  int* pt_arrayData = arrayData; 
+
+  for (int i = 0; i < 5; i++){
+    printf("&a[%d] = %p   p + %d = %p\n", i,  &arrayData[i], i, pt_arrayData + i);
+  }
+  return 0;
+}
 #endif

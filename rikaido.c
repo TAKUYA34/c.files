@@ -949,7 +949,7 @@ int main(void){
 }
 #endif
 
-#if(0)
+#if(1)
 /*  ポインタ配列、ダブルポインタ配列  */
 #include <stdio.h>
 
