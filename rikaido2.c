@@ -246,7 +246,7 @@ int main(void){
 }
 #endif
 
-#if (1)
+#if (0)
 /* 文字列の長さを調べる(ポインタによる走査) */
 
 //---  文字列の長さを返す  ---//
@@ -270,3 +270,31 @@ int main(void){
 }
 #endif
 
+#if (1)
+
+#define ARRAY_BIT 128
+/* 文字列sをdにコピーする */
+  char* str_copy(char* d, const char* s)
+  {
+    char* t = d;  // dのデータをtにコピーする
+    while ((*d++ = *s++))  // dをsの文字列に上書きする
+    {
+        ; // 空
+    }
+    return t;
+  }
+
+int main(void){
+
+  char str[ARRAY_BIT] = "ABC";
+  char tmp[ARRAY_BIT];
+
+  printf("str = \"%s\"\n", str);
+  printf("コピーするのは：");  scanf("%s", tmp);
+
+  str_copy(str, tmp);
+
+  printf("str = \"%s\"\n", str);
+
+}
+#endif
