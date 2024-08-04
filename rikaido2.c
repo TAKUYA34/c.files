@@ -205,7 +205,7 @@ int main(void)
 }
 #endif
 
-#if (1)
+#if (0)
 /* 配列の要素アドレス(要素へのポインタ)を表示する */
 
 int main(void){
@@ -217,5 +217,31 @@ int main(void){
     printf("&a[%d] = %p   p + %d = %p\n", i,  &arrayData[i], i, pt_arrayData + i);
   }
   return 0;
+}
+#endif
+
+#if (1)
+/* 配列の要素を受け渡す */
+
+  #define FOR_MAX_COUNT 5 
+
+  void arraySet(int a[], int value)
+  {
+    for (int i = 0; i < FOR_MAX_COUNT; i++)
+    {
+        a[i] = value;
+    }
+  }
+
+int main(void){
+
+  int a[] = {1, 2, 3, 4, 5};
+
+  arraySet(a, 99);
+  
+  for (int i = 0; i < FOR_MAX_COUNT; i++)
+  {
+    printf("a[%d]の中身は%dです。\n", i, a[i]);
+  }
 }
 #endif
