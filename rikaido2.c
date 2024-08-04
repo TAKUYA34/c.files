@@ -241,7 +241,7 @@ int main(void){
   
   for (int i = 0; i < FOR_MAX_COUNT; i++)
   {
-    printf("a[%d]の中身は%dです。\n", i, a[i]);
+      printf("a[%d]の中身は%dです。\n", i, a[i]);
   }
 }
 #endif
