@@ -220,7 +220,7 @@ int main(void){
 }
 #endif
 
-#if (1)
+#if (0)
 /* 配列の要素を受け渡す */
 
   #define FOR_MAX_COUNT 5 
@@ -245,3 +245,28 @@ int main(void){
   }
 }
 #endif
+
+#if (1)
+/* 文字列の長さを調べる(ポインタによる走査) */
+
+//---  文字列の長さを返す  ---//
+int str_length(const char *s)
+{
+  int len = 0;
+    while (*s++)
+    {
+        len++;
+    }
+  return len;
+}
+
+int main(void){
+
+  char ca[128]; // ナル文字も含めて128文字まで格納できる
+
+  printf("文字列を入力せよ：");  scanf("%s", ca);
+
+  printf("文字列\"%s\"の長さは%dです。\n", ca, str_length(ca));
+}
+#endif
+
