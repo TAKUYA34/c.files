@@ -270,7 +270,7 @@ int main(void){
 }
 #endif
 
-#if (1)
+#if (0)
 
 #define ARRAY_BIT 128
 /* 文字列sをdにコピーする */
@@ -298,3 +298,71 @@ int main(void){
 
 }
 #endif
+
+#if (1)
+
+/* 5人の学生の身長を昇順にソートする */
+
+#define NUMBER 5
+#define NAME_LEN 64
+
+/* 学生を表す構造体 */
+typedef struct 
+{
+  char name[NAME_LEN];
+  int height;
+  double weight;
+}STUDENT;
+
+/* 昇順に対応するため、値を入れ替える */
+void swap_Student(STUDENT* x, STUDENT* y)
+{
+  STUDENT tmp = *x;
+  *x = *y;
+  *y = tmp;
+}
+
+/* 昇順にソートする処理 */
+void sort_by_height(STUDENT a[], int n)
+{
+  for (int i = 0; i < (n - 1); i++) // 配列[0]からスタートするため調整。n(5)-1回ループ
+  {
+    for (int j = (n - 1); j > i; j--) // １つ前のheightが大きい場合に入れ替える。
+    {
+      if (a[j - 1].height > a[j].height)
+      {
+        swap_Student(&a[j - 1], &a[j]);
+      }
+    }
+  }
+}
+
+int main(void)
+{
+  STUDENT std[] = {
+    {"Sato",   174, 67.3},
+    {"Sanage", 168, 71.7},
+    {"Takao",  153, 41.4},
+    {"Mike",   148, 38.7},
+    {"Masaki", 182, 75.2}
+  };
+
+  for (int i = 0; i < NUMBER; i++)
+  {
+    printf("%-8s %6d%6.1f\n", std[i].name, std[i].height, std[i].weight);
+  }
+
+  sort_by_height(std, NUMBER);
+  puts("身長順にソートしました。");
+
+  for (int i = 0; i < NUMBER; i++)
+  {
+    printf("%-8s %6d%6.1f\n", std[i].name, std[i].height, std[i].weight);
+  }
+  
+  return 0;
+}
+
+
+#endif
+
