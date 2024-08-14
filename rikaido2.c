@@ -339,13 +339,13 @@ void sort_by_height(STUDENT a[], int n)
 
 int main(void)
 {
-  STUDENT std[] = {
-    {"Sato",   174, 67.3},
-    {"Sanage", 168, 71.7},
-    {"Takao",  153, 41.4},
-    {"Mike",   148, 38.7},
-    {"Masaki", 182, 75.2}
-  };
+  STUDENT std[NUMBER];
+
+  for (int i = 0; i < NUMBER; i++){ 
+    printf("貴方の名前は？：");  scanf("%8s", std[i].name);
+    printf("貴方の身長は？：");  scanf("%6d", &std[i].height);
+    printf("貴方の体重は？：");  scanf("%6lf", &std[i].weight);
+  }
 
   for (int i = 0; i < NUMBER; i++)
   {
@@ -359,10 +359,17 @@ int main(void)
   {
     printf("%-8s %6d%6.1f\n", std[i].name, std[i].height, std[i].weight);
   }
-  
   return 0;
 }
-
-
 #endif
+
+/*  {"Sato",   174, 67.3},
+    {"Sanage", 168, 71.7},
+    {"Takao",  153, 41.4},
+    {"Mike",   148, 38.7},
+    {"Masaki", 182, 75.2}
+*/
+
+
+
 
