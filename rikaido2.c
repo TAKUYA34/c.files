@@ -2,6 +2,7 @@
 
 //--- getchar関数とEOF ---//
 #include <stdio.h>
+#include <string.h>
 #include "Prototype_dec.h"
 #include "DataAcq_info.c"
 
@@ -312,6 +313,8 @@ typedef struct
   char name[NAME_LEN];
   int height;
   double weight;
+  int btm;
+
 }STUDENT;
 
 /* 昇順に対応するため、値を入れ替える */
@@ -322,7 +325,7 @@ void swap_Student(STUDENT* x, STUDENT* y)
   *y = tmp;
 }
 
-/* 昇順にソートする処理 */
+/* 昇順(身長順)にソートする処理 */
 void sort_by_height(STUDENT a[], int n)
 {
   for (int i = 0; i < (n - 1); i++) // 配列[0]からスタートするため調整。n(5)-1回ループ
@@ -337,9 +340,25 @@ void sort_by_height(STUDENT a[], int n)
   }
 }
 
+/* 昇順(名前順)にソートする処理 */
+void sort_by_name(STUDENT a[], int n)
+{
+  for (int i = 0; i < (n - 1); i++) // 配列[0]からスタートするため調整。n(5)-1回ループ
+  {
+    for (int j = (n - 1); j > i; j--) // １つ前のnameが大きい場合に入れ替える。
+    {
+      if (strcmp(a[j - 1].name, a[j].name) > 0)
+      {
+        swap_Student(&a[j - 1], &a[j]);
+      }
+    }
+  }
+}
+
 int main(void)
 {
   STUDENT std[NUMBER];
+  STUDENT flag;
 
   for (int i = 0; i < NUMBER; i++){ 
     printf("貴方の名前は？：");  scanf("%8s", std[i].name);
@@ -351,10 +370,25 @@ int main(void)
   {
     printf("%-8s %6d%6.1f\n", std[i].name, std[i].height, std[i].weight);
   }
-
-  sort_by_height(std, NUMBER);
-  puts("身長順にソートしました。");
-
+  
+    printf("身長順にソートしますか？それとも名前順にソートしますか？：\n");
+    printf("身長順にソートする場合：1。名前順にソートする場合は：2。ソートしない場合は1と2以外の番号を選択して下さい。");  scanf("%d", &flag.btm);
+  
+  if (flag.btm == 1)
+  {
+    puts("身長順にソートしました。");
+    sort_by_height(std, NUMBER);
+  }
+  else if (flag.btm == 2)
+  {
+    puts("名前順にソートしました。");
+    sort_by_name(std, NUMBER);
+  }
+  else
+  {
+    puts("ソートを終了します。");
+  }
+  
   for (int i = 0; i < NUMBER; i++)
   {
     printf("%-8s %6d%6.1f\n", std[i].name, std[i].height, std[i].weight);
@@ -363,7 +397,8 @@ int main(void)
 }
 #endif
 
-/*  {"Sato",   174, 67.3},
+/*  初期化子用
+    {"Sato",   174, 67.3},
     {"Sanage", 168, 71.7},
     {"Takao",  153, 41.4},
     {"Mike",   148, 38.7},
