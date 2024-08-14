@@ -320,7 +320,7 @@ typedef struct
 /* 昇順に対応するため、値を入れ替える */
 void swap_Student(STUDENT* x, STUDENT* y)
 {
-  STUDENT tmp = *x;
+  STUDENT tmp = *x; // xとyの値を入れ替える
   *x = *y;
   *y = tmp;
 }
@@ -330,11 +330,11 @@ void sort_by_height(STUDENT a[], int n)
 {
   for (int i = 0; i < (n - 1); i++) // 配列[0]からスタートするため調整。n(5)-1回ループ
   {
-    for (int j = (n - 1); j > i; j--) // １つ前のheightが大きい場合に入れ替える。
+    for (int j = (n - 1); j > i; j--)
     {
       if (a[j - 1].height > a[j].height)
       {
-        swap_Student(&a[j - 1], &a[j]);
+        swap_Student(&a[j - 1], &a[j]); // １つ前のheight値が右オペランド値よりも大きい場合に入れ替える
       }
     }
   }
@@ -345,11 +345,11 @@ void sort_by_name(STUDENT a[], int n)
 {
   for (int i = 0; i < (n - 1); i++) // 配列[0]からスタートするため調整。n(5)-1回ループ
   {
-    for (int j = (n - 1); j > i; j--) // １つ前のnameが大きい場合に入れ替える。
+    for (int j = (n - 1); j > i; j--)
     {
       if (strcmp(a[j - 1].name, a[j].name) > 0)
       {
-        swap_Student(&a[j - 1], &a[j]);
+        swap_Student(&a[j - 1], &a[j]); // １つ前のnameの文字数が右オペランド値よりも大きい場合に順番を入れ替える
       }
     }
   }
