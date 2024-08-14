@@ -3,6 +3,7 @@
 //--- getchar関数とEOF ---//
 #include <stdio.h>
 #include <string.h>
+#include <math.h>
 #include "Prototype_dec.h"
 #include "DataAcq_info.c"
 
@@ -300,7 +301,7 @@ int main(void){
 }
 #endif
 
-#if (1)
+#if (0)
 
 /* 5人の学生の身長を昇順にソートする */
 
@@ -405,6 +406,35 @@ int main(void)
     {"Masaki", 182, 75.2}
 */
 
+#if (1)
+/* 2点間の距離を求める */
+#define sqr(n) ((n) * (n)) // 2乗値を求める
 
+/* 点の座標を表す構造体 */
+typedef struct
+{
+  double x;
+  double y;
+} POINT;
+
+/* 点p1 と 点p2 の距離を返す */
+double distance_of(POINT p1, POINT p2)
+{
+  return sqrt(sqr(p1.x - p2.x) + sqr(p1.y - p2.y));
+}
+
+int main(void)
+{
+  POINT current, dest;
+  
+  printf("現在地のX座標：");  scanf("%lf", &current.x);
+  printf("現在地のY座標：");  scanf("%lf", &current.y);
+  printf("目的地のX座標：");  scanf("%lf", &dest.x);
+  printf("目的地のY座標：");  scanf("%lf", &dest.y);
+
+  printf("目的地までの距離は%.2fです。\n", distance_of(current, dest));
+}
+
+#endif
 
 
