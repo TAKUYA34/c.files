@@ -301,7 +301,7 @@ int main(void){
 }
 #endif
 
-#if (0)
+#if (1)
 
 /* 5人の学生の身長を昇順にソートする */
 
@@ -356,15 +356,35 @@ void sort_by_name(STUDENT a[], int n)
   }
 }
 
+int exception_hand(int i){
+  if (exception_hand(i) == -1)
+  {
+    printf("データが未入力です。もう一度入力して下さい。");  /* exception handling */
+  }
+  return -1;
+}
+
 int main(void)
 {
   STUDENT std[NUMBER];
   STUDENT flag;
 
-  for (int i = 0; i < NUMBER; i++){ 
-    printf("貴方の名前は？：");  scanf("%8s", std[i].name);
-    printf("貴方の身長は？：");  scanf("%6d", &std[i].height);
-    printf("貴方の体重は？：");  scanf("%6lf", &std[i].weight);
+  for (int i = 0; i < NUMBER; i++){
+    if (i != -1)
+    {
+      printf("貴方の名前は？：");  scanf("%8s", std[i].name);
+      printf("貴方の身長は？：");  scanf("%6d", &std[i].height);
+      printf("貴方の体重は？：");  scanf("%6lf", &std[i].weight);
+    }
+    else if (std[i].name == '\0')
+    {
+      exception_hand(i);
+    }
+    else
+    {
+      // 何もしない
+      return 0;
+    }
   }
 
   for (int i = 0; i < NUMBER; i++)
@@ -406,7 +426,7 @@ int main(void)
     {"Masaki", 182, 75.2}
 */
 
-#if (1)
+#if (0)
 /* 2点間の距離を求める */
 #define sqr(n) ((n) * (n)) // 2乗値を求める
 
