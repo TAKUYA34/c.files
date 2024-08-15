@@ -6,6 +6,7 @@
 #include <math.h>
 #include "Prototype_dec.h"
 #include "DataAcq_info.c"
+#include "bit_flag.h"
 
 #if (0)
 int main(void){
@@ -301,7 +302,7 @@ int main(void){
 }
 #endif
 
-#if (1)
+#if (0)
 
 /* 5人の学生の身長を昇順にソートする */
 
@@ -406,7 +407,7 @@ int main(void)
     {"Masaki", 182, 75.2}
 */
 
-#if (0)
+#if (1)
 /* 2点間の距離を求める */
 #define sqr(n) ((n) * (n)) // 2乗値を求める
 
@@ -417,24 +418,66 @@ typedef struct
   double y;
 } POINT;
 
+/* 自動車を表す構造体 */
+typedef struct
+{
+  POINT pt;
+  double fuel;
+} CAR;
+
 /* 点p1 と 点p2 の距離を返す */
 double distance_of(POINT p1, POINT p2)
 {
   return sqrt(sqr(p1.x - p2.x) + sqr(p1.y - p2.y));
 }
 
-int main(void)
+/* 自動車の現在位置と残り燃料を表示 */
+void put_info(CAR c)
 {
-  POINT current, dest;
-  
-  printf("現在地のX座標：");  scanf("%lf", &current.x);
-  printf("現在地のY座標：");  scanf("%lf", &current.y);
-  printf("目的地のX座標：");  scanf("%lf", &dest.x);
-  printf("目的地のY座標：");  scanf("%lf", &dest.y);
-
-  printf("目的地までの距離は%.2fです。\n", distance_of(current, dest));
+  printf("現在位置：(%.2f, %.2f)\n", c.pt.x, c.pt.y);
+  printf("残り燃料：%.2fリットル\n", c.fuel);
 }
 
+/* cの指す車を目的座標destに移動 */
+int move(CAR* c, POINT dest)
+{
+  double d = distance_of(c->pt, dest);  // 移動距離
+    if (d > c->fuel)  // 移動距離が燃料を超過
+    {
+      return 0;  // 移動不可
+    }
+  c->pt = dest;  //現在位置を更新する(destに移動)
+  c->fuel -= d;  //燃料を更新(移動した分だけ減る)
+  return 1; //移動成功
+}
+
+int main(void)
+{
+  CAR mycar = {{0.0, 0.0}, 90.0};
+
+  while (ON)
+  {
+    int select;
+    POINT dest;  // 目的地の座標
+
+    put_info(mycar); // 現在位置と残り燃料を表示
+    printf("移動しますか？【Yes...1／No...0】:");  scanf("%d", &select);
+
+    if (select != 1)
+    {
+      break;
+    }
+
+    printf("目的地のX座標：");  scanf("%lf", &dest.x);
+    printf("目的地のY座標：");  scanf("%lf", &dest.y);
+     
+    if (!move(&mycar, dest))
+    {
+    puts("\a燃料不足で移動できません。");
+    }
+  }
+  return 0;
+}
 #endif
 
 
