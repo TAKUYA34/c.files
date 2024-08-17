@@ -4,6 +4,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
+#include <stdlib.h>
+#include <regex.h>
 #include "Prototype_dec.h"
 #include "DataAcq_info.c"
 #include "bit_flag.h"
@@ -302,7 +304,7 @@ int main(void){
 }
 #endif
 
-#if (0)
+#if (1)
 
 /* 5人の学生の身長を昇順にソートする */
 
@@ -316,6 +318,7 @@ typedef struct
   int height;
   double weight;
   int btm;
+  int error;
 
 }STUDENT;
 
@@ -357,15 +360,31 @@ void sort_by_name(STUDENT a[], int n)
   }
 }
 
+int exception_hand(int e){
+  if (exception_hand(e) == -1)
+  {
+    printf("データが未入力です。もう一度入力して下さい。");  /* exception handling */
+    return 1;
+  }
+  free(e);
+  return 0;
+}
+
 int main(void)
 {
   STUDENT std[NUMBER];
   STUDENT flag;
+  STUDENT ex_hand;
 
   for (int i = 0; i < NUMBER; i++){
-    printf("貴方の名前は？：");  scanf("%8s", std[i].name);
+    printf("貴方の名前は？：");  fgets(std[i].name, sizeof(std[i].name), stdin);
     printf("貴方の身長は？：");  scanf("%6d", &std[i].height);
     printf("貴方の体重は？：");  scanf("%6lf", &std[i].weight);
+    if (std[i].name[0] == NULL)
+    {
+      ex_hand.error = -1;
+      exception_hand(ex_hand.error);
+    }
   }
 
   for (int i = 0; i < NUMBER; i++)
@@ -405,9 +424,14 @@ int main(void)
     {"Takao",  153, 41.4},
     {"Mike",   148, 38.7},
     {"Masaki", 182, 75.2}
+  for (int i = 0; i < NUMBER; i++){
+    printf("貴方の名前は？：");  scanf("%8s", std[i].name);
+    printf("貴方の身長は？：");  scanf("%6d", &std[i].height);
+    printf("貴方の体重は？：");  scanf("%6lf", &std[i].weight);
+  }
 */
 
-#if (1)
+#if (0)
 /* 2点間の距離を求める */
 #define sqr(n) ((n) * (n)) // 2乗値を求める
 
@@ -479,5 +503,7 @@ int main(void)
   return 0;
 }
 #endif
+
+
 
 
