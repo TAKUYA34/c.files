@@ -318,8 +318,6 @@ typedef struct
   int height;
   double weight;
   int btm;
-  int error;
-
 }STUDENT;
 
 /* 昇順に対応するため、値を入れ替える */
@@ -360,31 +358,15 @@ void sort_by_name(STUDENT a[], int n)
   }
 }
 
-int exception_hand(int e){
-  if (exception_hand(e) == -1)
-  {
-    printf("データが未入力です。もう一度入力して下さい。");  /* exception handling */
-    return 1;
-  }
-  free(e);
-  return 0;
-}
-
 int main(void)
 {
   STUDENT std[NUMBER];
   STUDENT flag;
-  STUDENT ex_hand;
 
   for (int i = 0; i < NUMBER; i++){
-    printf("貴方の名前は？：");  fgets(std[i].name, sizeof(std[i].name), stdin);
+    printf("貴方の名前は？：");  scanf("%8s", std[i].name);
     printf("貴方の身長は？：");  scanf("%6d", &std[i].height);
     printf("貴方の体重は？：");  scanf("%6lf", &std[i].weight);
-    if (std[i].name[0] == NULL)
-    {
-      ex_hand.error = -1;
-      exception_hand(ex_hand.error);
-    }
   }
 
   for (int i = 0; i < NUMBER; i++)
