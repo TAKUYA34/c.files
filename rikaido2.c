@@ -304,7 +304,7 @@ int main(void){
 }
 #endif
 
-#if (1)
+#if (0)
 
 /* 5人の学生の身長を昇順にソートする */
 
@@ -413,7 +413,7 @@ int main(void)
   }
 */
 
-#if (0)
+#if (1)
 /* 2点間の距離を求める */
 #define sqr(n) ((n) * (n)) // 2乗値を求める
 
@@ -477,7 +477,7 @@ int main(void)
     printf("目的地のX座標：");  scanf("%lf", &dest.x);
     printf("目的地のY座標：");  scanf("%lf", &dest.y);
      
-    if (!move(&mycar, dest))
+    if (!move(&mycar, dest))  // moveが0以外だと成立しない条件に設定
     {
     puts("\a燃料不足で移動できません。");
     }
